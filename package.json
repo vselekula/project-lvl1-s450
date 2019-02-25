@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/vselekula/project-lvl1-s450/issues"
   },
-  "homepage": "https://github.com/vselekula/project-lvl1-s450#readme"
+  "homepage": "https://github.com/vselekula/project-lvl1-s450#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
 }
