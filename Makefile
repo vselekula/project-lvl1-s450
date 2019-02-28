@@ -7,4 +7,4 @@ build:
 publish:
         npm publish
 make lint:
-        npx eslint
+        npx eslint .
