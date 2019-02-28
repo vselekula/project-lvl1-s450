@@ -1,6 +1,6 @@
 {
   "name": "brain-games-vselekula",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "1st project on Hexlet \"Brain Games\"",
   "scripts": {
     "build": "cross-env NODE_ENV=production babel src --out-dir dist --source-maps inline",
@@ -18,7 +18,11 @@
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
-    "cross-env": "^5.2.0"
+    "babel-eslint": "^8.2.6",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
   },
   "keywords": [
     "brain",
