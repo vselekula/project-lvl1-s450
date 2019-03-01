@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import evenGame from '../index-even';
+import evenGame from '../games/index-brainEven';
 
 evenGame(3);
