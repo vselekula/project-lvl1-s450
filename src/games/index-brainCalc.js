@@ -1,35 +1,36 @@
-import {
-  header, condition, askName, greet, ask, isAnswerCorrect, randomNumber, randomOperator,
-  ranOpWithTwoRanNum,
-} from './functions';
+#!/usr/bin/env node
+import { cons, car, cdr } from 'hexlet-pairs';
+import brainGames from '..';
 
-const indexBrainCalc = (numOfQuestions) => {
-  header('Welcome to the Brain Games!');
-  condition('What is the result of the expression?');
-  const name = askName('May I have your name? ');
-  greet('Hello, ', name);
-  const arrayOfOperations = ['-', '*', '+'];
-  let correctAnswersCounter = 0;
-  for (let i = 1; i <= numOfQuestions; i += 1) {
-    const firstNumber = randomNumber(0, 10);
-    const secondNumber = randomNumber(0, 10);
-    const operator = randomOperator(arrayOfOperations);
-    const question = `${firstNumber} ${operator} ${secondNumber}`;
-    const userAnswer = ask('Question:', question, 'Your answer:');
-    const rightAnswer = ranOpWithTwoRanNum(firstNumber, secondNumber, operator);
-    const result = isAnswerCorrect(Number(userAnswer), rightAnswer);
-    if (result) {
-      correctAnswersCounter += 1;
-      console.log('Correct!');
-    }
-    if (!result) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'`);
-      console.log(`Let's try again, ${name}`);
-      break;
-    }
-    if (correctAnswersCounter === 3) {
-      console.log(`Congratulations, ${name} !`);
-    }
+const condition = 'What is the result of the expression?';
+const arrayOfOperators = ['+', '-', '*'];
+const generateData = () => {
+  const a = Math.floor(Math.random() * 10);
+  const b = Math.floor(Math.random() * 10);
+  const operation = arrayOfOperators[Math.floor(Math.random() * 3)];
+  return cons(a, cons(operation, b));
+};
+const calculateExpression = (expression) => {
+  const x = car(expression);
+  const operation = car(cdr(expression));
+  const y = cdr(cdr(expression));
+  switch (operation) {
+    case '+':
+      return x + y;
+    case '-':
+      return x - y;
+    case '*':
+      return x * y;
+    default:
+      throw new Error('Как так получилось — не понятно');
   }
 };
-export default indexBrainCalc;
+const game = () => {
+  const items = generateData();
+  const rightAnswer = calculateExpression(items);
+  return { rightAnswer, items };
+};
+
+export default () => {
+  brainGames(condition, game);
+};
