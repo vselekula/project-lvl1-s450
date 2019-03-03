@@ -1,5 +1,5 @@
-import {car, cdr, cons} from "hexlet-pairs";
-import brainGames from "../index";
+import { car, cdr, cons } from 'hexlet-pairs';
+import brainGames from '../index';
 
 const condition = 'Find the greatest common divisor of given numbers.';
 const generateData = () => {
@@ -8,10 +8,10 @@ const generateData = () => {
   return cons(a, b);
 };
 const calculateDividor = (x, y) => {
-    if (y === 0) {
-      return x;
-    }
-    return calculateDividor(y, x % y);
+  if (y === 0) {
+    return x;
+  }
+  return calculateDividor(y, x % y);
 };
 
 const game = () => {
