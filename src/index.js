@@ -1,6 +1,6 @@
 import { car, cdr, isPair } from 'hexlet-pairs';
 import {
-  header, askName, win, answerIsIncorrect, answerIsCorrect, greet, ask, isAnswerCorrect, condition
+  header, askName, win, answerIsIncorrect, answerIsCorrect, greet, ask, isAnswerCorrect, condition,
 } from './utils';
 
 const numOfQuestion = 3;
