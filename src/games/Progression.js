@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import brainGames from '../index';
-import { randomNumber } from './functions';
+import { randomNumber } from '../utils';
 
 const condition = 'What number is missing in the progression?';
 const progressionLength = 10;
@@ -18,7 +18,7 @@ const generateData = (indexOfMissingElement, start, adder) => {
 const game = () => {
   const start = randomNumber(0, 10);
   const adder = randomNumber(0, 10);
-  const indexOfMissingElement = randomNumber(0, 10);
+  const indexOfMissingElement = randomNumber(0, progressionLength);
   const rightAnswer = start + (indexOfMissingElement * adder);
   const items = generateData(indexOfMissingElement, start, adder);
   return { rightAnswer, items };

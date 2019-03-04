@@ -1,10 +1,11 @@
 import { car, cdr, cons } from 'hexlet-pairs';
-import brainGames from '../index';
+import brainGames from '..';
+import { randomNumber } from '../utils';
 
 const condition = 'Find the greatest common divisor of given numbers.';
 const generateData = () => {
-  const a = Math.floor((Math.random() * 100) + 1);
-  const b = Math.floor((Math.random() * 100) + 1);
+  const a = randomNumber(0, 100);
+  const b = randomNumber(0, 100);
   return cons(a, b);
 };
 const calculateDividor = (x, y) => {

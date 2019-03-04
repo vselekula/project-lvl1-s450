@@ -1,7 +1,7 @@
 import { car, cdr, isPair } from 'hexlet-pairs';
 import {
-  header, askName, win, answerIsIncorrect, answerIsCorrect, greet, ask,
-} from './games/functions';
+  header, askName, win, answerIsIncorrect, answerIsCorrect, greet, ask, isAnswerCorrect, condition
+} from './utils';
 
 const numOfQuestion = 3;
 const toString = (pair) => {
@@ -12,29 +12,24 @@ const toString = (pair) => {
   }
   return String(pair);
 };
-
-export default (condition, game) => {
+export default (cond, game) => {
   header();
-  if (condition !== undefined) {
-    console.log(`${condition}\n`);
-  }
+  condition(cond);
   const userName = askName();
   greet(userName);
-  if (game !== undefined) {
-    const iter = (acc) => {
-      if (acc === 0) {
-        win(userName);
-        return;
-      }
-      const { rightAnswer, items } = game();
-      const userAnswer = ask(toString(items));
-      if (String(rightAnswer) === userAnswer) {
-        answerIsCorrect();
-        iter(acc - 1);
-      } else {
-        answerIsIncorrect(userAnswer, rightAnswer, userName);
-      }
-    };
-    iter(numOfQuestion);
-  }
+  const iter = (acc) => {
+    if (acc === 0) {
+      win(userName);
+      return;
+    }
+    const { rightAnswer, items } = game();
+    const userAnswer = ask(toString(items));
+    if (isAnswerCorrect(userAnswer, rightAnswer)) {
+      answerIsCorrect();
+      iter(acc - 1);
+    } else {
+      answerIsIncorrect(userAnswer, rightAnswer, userName);
+    }
+  };
+  iter(numOfQuestion);
 };

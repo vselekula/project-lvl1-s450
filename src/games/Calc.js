@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 import { cons, car, cdr } from 'hexlet-pairs';
+import { randomNumber } from '../utils';
 import brainGames from '..';
 
 const condition = 'What is the result of the expression?';
 const arrayOfOperators = ['+', '-', '*'];
+const arrayLen = arrayOfOperators.length;
 const generateData = () => {
-  const a = Math.floor(Math.random() * 10);
-  const b = Math.floor(Math.random() * 10);
-  const operation = arrayOfOperators[Math.floor(Math.random() * 3)];
+  const a = randomNumber(0, 10);
+  const b = randomNumber(0, 10);
+  const operation = arrayOfOperators[randomNumber(0, arrayLen)];
   return cons(a, cons(operation, b));
 };
 const calculateExpression = (expression) => {
